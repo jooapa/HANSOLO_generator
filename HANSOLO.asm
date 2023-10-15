@@ -1,59 +1,28 @@
-.model small
-.data
+section .data
+    hansolo db 'HANSOLO', 0
 
-filename db "hansolo.json", 0
-fileHandle dw ?
+section .text
+    global _start
 
-json_data db "{", 10, "  ""data"": [", 10
-json_loop db ","
+_start:
+    mov ecx, 1000000 ; set loop counter to 1,000,000
+    mov ebx, 1 ; set file descriptor to stdout
+    mov edx, 7 ; set number of bytes to write to 7 (length of 'HANSOLO')
+    mov esi, hansolo ; set source string to 'HANSOLO'
 
-success_msg db "File created", 0
-error_msg db "Failed to create file", 0
+write_loop:
+    push ecx ; save loop counter on the stack
+    push esi ; save source string on the stack
+    push edx ; save number of bytes to write on the stack
+    push ebx ; save file descriptor on the stack
+    mov eax, 4 ; set system call to write
+    int 0x80 ; call kernel
+    add esp, 16 ; clean up the stack
+    pop esi ; restore source string from the stack
+    pop ecx ; restore loop counter from the stack
+    dec ecx ; decrement loop counter
+    jnz write_loop ; jump to write_loop if loop counter is not zero
 
-.code
-org 100h ; TASM entry point
-
-start:
-    ; Open file for writing
-    mov ah, 3Dh         ; DOS function to open file
-    lea dx, filename    ; Load filename into DX
-    mov al, 2           ; AL = 2 (write mode)
-    int 21h             ; Call DOS
-    jc file_error       ; Jump if carry flag set (error)
-
-    mov [fileHandle], ax ; Store file handle
-
-    ; Write JSON data to the file
-    mov ah, 40h         ; DOS function to write to file
-    mov bx, [fileHandle]
-    lea dx, json_data   ; Load address of JSON data into DX
-    mov cx, json_size   ; Length of JSON data
-    int 21h             ; Call DOS
-    jc file_error       ; Jump if carry flag set (error)
-
-    ; Close the file
-    mov ah, 3Eh         ; DOS function to close file
-    mov bx, [fileHandle]
-    int 21h             ; Call DOS
-
-    ; Display success message
-    lea dx, success_msg
-    mov ah, 09h
-    int 21h
-
-    ; Exit
-    mov ah, 4Ch         ; DOS function to exit
-    int 21h
-
-file_error:
-    lea dx, error_msg
-    mov ah, 09h
-    int 21h
-
-    ; Exit with error code 1
-    mov ax, 4C01h
-    int 21h
-
-json_size equ $ - json_data
-
-org 10000h ; Start of data section
+    mov eax, 1 ; set system call to exit
+    xor ebx, ebx ; set exit status to 0
+    int 0x80 ; call kernel

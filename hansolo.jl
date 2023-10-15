@@ -1,12 +1,10 @@
-using Pkg
-Pkg.add("PackageCompiler")
+# Open file for writing
+file = open("HANSOLO.hs", "w")
 
-file = open("hansolo.json", "w")
-
-write(file, "{\n  \"data\": [ \n")
-for i in 1:100000000
-    write(file, "HANSOLO, \n")
+# Write HANSOLO 1,000,000 times to the file
+for i in 1:1_000_000
+    write(file, "HANSOLO\n")
 end
-write(file, "HANSOLO\n]\n}")
 
+# Close the file
 close(file)
