@@ -38,3 +38,6 @@ Code that writes HANSOLO 1,000,000 times to a file called HANSOLO.hs
 - [x] Ada (.ada)
 - [x] Pascal (.pas)
 - [x] PureScript (.purs)
+
+## Contributing 
+Please contribute to this project by submitting full working code that writes HANSOLO 1,000,000 times to a file called HANSOLO.hs
