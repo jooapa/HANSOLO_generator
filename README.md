@@ -38,6 +38,28 @@ Code that writes HANSOLO 1,000,000 times to a file called HANSOLO.hs
 - [x] Ada (.ada)
 - [x] Pascal (.pas)
 - [x] PureScript (.purs)
+- [ ] Bash (.bash)
+- [ ] Racket (.rkt)
+- [ ] OCaml (.ml)
+- [ ] Prolog (.pro)
+- [ ] Scheme (.scm)
+- [ ] Haskell (.hs)
+- [ ] D (.d)
+- [ ] Nim (.nim)
+- [ ] Crystal (.cr)
+- [ ] Eiffel (.e)
+- [ ] Forth (.fth)
+- [ ] BASIC (.bas)
+- [ ] Awk (.awk)
+- [ ] Smalltalk (.st)
+- [ ] Logo (.logo)
+- [ ] Mathematica (.m)
+- [ ] es (.es)
+- [ ] C-- (.cmm)
+- [ ] J (.ijs)
+- [ ] Jscript (.jscript)
+- [ ] M# (.msharp)
+
 
 ## Contributing 
 Please contribute to this project by submitting full working code that writes HANSOLO 1,000,000 times to a file called HANSOLO.hs
