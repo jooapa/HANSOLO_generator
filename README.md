@@ -59,7 +59,9 @@ Code that writes HANSOLO 1,000,000 times to a file called HANSOLO.hs
 - [ ] J (.ijs)
 - [ ] Jscript (.jscript)
 - [ ] M# (.msharp)
-
+- [ ] MUMPS (.mumps)
+- [x] Brainfuck (.bf)
+- [ ] Chef (.chef)
 
 ## Contributing 
 Please contribute to this project by submitting full working code that writes HANSOLO 1,000,000 times to a file called HANSOLO.hs
